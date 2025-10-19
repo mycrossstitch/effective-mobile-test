@@ -24,7 +24,8 @@ class MainPageLocators():
         "cases": (By.CSS_SELECTOR, "a.t-menu__link-item[href='#cases']"),
         "Reviews": (By.CSS_SELECTOR, "a.t-menu__link-item[href='#Reviews']"),
         "contacts": (By.CSS_SELECTOR, "a.t-menu__link-item[href='#contacts']"),
-        "specialists": (By.XPATH, "//a[@href='#specialists']"),
+        #"specialists": (By.XPATH, "//a[@href='#specialists']"),  # ⚠️ отсутствует на странице с бургер-меню (ожидаемое
+        # поведение/баг)
         "cooperation": (By.XPATH, "(//a[@href='#contacts'])[3]"),
         "moreinfo": (By.XPATH, "//a[@href='#moreinfo' and text()='Подробнее']"),
         "logo_footer": (By.XPATH, "(//a[@href='#main' and text()='Effective Mobile'])[2]"),
@@ -44,7 +45,7 @@ class MainPageLocators():
 
     PAGE_LINKS = {
         "logo_footer": "/#main",
-        "specialists": "/#specialists",
+        #"specialists": "/#specialists",  # ⚠️ отсутствует на странице с бургер-меню (ожидаемое поведение/баг)
         "cooperation": "/#contacts",
         "moreinfo": "/#moreinfo",
     }

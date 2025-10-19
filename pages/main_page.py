@@ -51,7 +51,7 @@ class MainPage(BasePage):
 
                 try:
                     # Если бургер-меню, нужно открыть
-                    if "burger_button" in locators:
+                    if "burger_button" in locators and name not in MPL.PAGE_LINKS:
                         self.click_element(locators["burger_button"])
                     # Кликаем и проверяем переход
                     self.click_element(locator)
