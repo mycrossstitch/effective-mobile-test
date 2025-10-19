@@ -5,13 +5,14 @@ from selenium.webdriver.chrome.options import Options
 from webdriver_manager.chrome import ChromeDriverManager
 
 
-@pytest.fixture(autouse=True)
+@pytest.fixture()
 def driver(request):
+    window_size = getattr(request, "param", (1920, 1080))  # по умолчанию десктоп
     options = Options()
-    options.add_argument("--headless=new")
+    #options.add_argument("--headless=new")
     options.add_argument("--no-sandbox")
     options.add_argument("--disable-dev-shm-usage")
-    options.add_argument("--window-size=1920,1080")
+    options.add_argument(f"--window-size={window_size[0]},{window_size[1]}")
     driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
 
     request.cls.driver = driver

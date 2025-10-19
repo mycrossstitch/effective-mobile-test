@@ -7,18 +7,9 @@ class MainPage(BasePage):
 
     PAGE_URL = 'https://effective-mobile.ru'
 
-    def get_locators(self):
-        """Выбираем текущий набор локаторов в зависимости от наличия бургер-меню"""
-        if self.is_element_visible(MPL.LOCATORS_BURGER_MENU["burger_button"]):
-            return MPL.LOCATORS_BURGER_MENU
-        return MPL.LOCATORS_FULL_MENU
-
-
-
     @allure.step("Проверка всех локаторов на главной странице")
-    def check_all_locators_exist(self):
+    def check_all_locators_exist(self, locators):
         errors = []  # сюда будем собирать сообщения об ошибках
-        locators = self.get_locators()
 
         for name, locator in locators.items():
             with allure.step(f"Проверяем наличие элемента: {name}"):
@@ -39,9 +30,8 @@ class MainPage(BasePage):
             )
 
     @allure.step("Проверка корректности всех ссылок на главной странице")
-    def check_all_links(self):
+    def check_all_links(self, locators):
         errors = []
-        locators = self.get_locators()
 
         # Перебираем ссылки по ключу
         for name, relative_url in MPL.LINKS.items():
@@ -60,6 +50,9 @@ class MainPage(BasePage):
                     continue
 
                 try:
+                    # Если бургер-меню, нужно открыть
+                    if "burger_button" in locators:
+                        self.click_element(locators["burger_button"])
                     # Кликаем и проверяем переход
                     self.click_element(locator)
                     self.verify_current_url(expected_url)

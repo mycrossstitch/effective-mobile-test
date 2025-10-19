@@ -19,7 +19,6 @@ class MainPageLocators():
         "burger_button" : (By.CSS_SELECTOR, "button.t-menuburger.t-menuburger_first"),
         "container" : (By.CLASS_NAME, "t450__container"),
         "logo_header": (By.CSS_SELECTOR, ".t450__logo.t-heading.t-heading_xs"),
-        "logo_footer": (By.XPATH, "(//a[@href='#main' and text()='Effective Mobile'])[2]"),
         "about": (By.CSS_SELECTOR, "a.t-menu__link-item[href='#about']"),
         "services": (By.CSS_SELECTOR, "a.t-menu__link-item[href='#moreinfo']"),
         "cases": (By.CSS_SELECTOR, "a.t-menu__link-item[href='#cases']"),
@@ -28,18 +27,26 @@ class MainPageLocators():
         "specialists": (By.XPATH, "//a[@href='#specialists']"),
         "cooperation": (By.XPATH, "(//a[@href='#contacts'])[3]"),
         "moreinfo": (By.XPATH, "//a[@href='#moreinfo' and text()='Подробнее']"),
+        "logo_footer": (By.XPATH, "(//a[@href='#main' and text()='Effective Mobile'])[2]"),
 
     }
 
-    LINKS = {
+    MENU_LINKS = {
+
         "logo_header": "/#main",
-        "logo_footer": "/#main",
         "about": "/#about",
         "services": "/#moreinfo",
         "cases": "/#cases",
         "Reviews": "/#Reviews",
         "contacts": "/#contacts",
+
+    }
+
+    PAGE_LINKS = {
+        "logo_footer": "/#main",
         "specialists": "/#specialists",
         "cooperation": "/#contacts",
         "moreinfo": "/#moreinfo",
     }
+
+    LINKS = {**MENU_LINKS, **PAGE_LINKS}
