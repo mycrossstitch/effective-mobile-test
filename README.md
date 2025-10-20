@@ -2,6 +2,10 @@ README.md
 # Automated UI tests — effective-mobile.ru (Selenium)
 
 Проект покрывает тесты для главной страницы сайта `effective-mobile.ru`.
+# Что проверяется
+ - 	Переходы по основным блокам/ссылкам главной страницы (О нас, Контакты и др.) — локаторы и URL’ы.
+ - 	Реализован паттерн Page Object.
+ - Интеграция с Allure для удобного анализа результатов.
 
 ### Технологии:
 - Python 3.10
@@ -33,11 +37,9 @@ allure --version
  - allure serve allure-results
 # Запуск тестов в Docker
 ### сборка образа
-docker build -t effective-mobile-tests:latest .
-### запуск контейнера (монтируем папку с результатами)
- - docker run --rm -v %cd%/allure-results:/app/allure-results effective-mobile-tests:latest
+docker-compose build --no-cache
+### запуск контейнера 
+docker-compose up
+### просмотр отчета
+http://localhost:5050/allure-docker-service/projects/default/reports/latest/index.html
 
-# Что проверяется
- - 	Переходы по основным блокам/ссылкам главной страницы (О нас, Контакты и др.) — локаторы и URL’ы.
- - 	Реализован паттерн Page Object.
- - Интеграция с Allure для удобного анализа результатов.
