@@ -6,15 +6,15 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
 
 
-
 class BasePage:
-
 
     def __init__(self, driver):
         self.driver: WebDriver = driver
 
+
     def open(self):
         self.driver.get(self.PAGE_URL)
+
 
     @allure.step("Проверяем, что элемент присутствует на странице")
     def is_element_present(self, locator):
@@ -24,6 +24,7 @@ class BasePage:
             return False
         return True
 
+
     @allure.step("Проверяем, что элемент отсутствует на странице")
     def is_not_element_present(self, locator, timeout=4):
         try:
@@ -32,14 +33,6 @@ class BasePage:
             return True
         return False
 
-    def is_element_visible(self, locator, timeout=3):
-        try:
-            WebDriverWait(self.driver, timeout).until(
-                EC.visibility_of_element_located(locator)
-            )
-            return True
-        except TimeoutException:
-            return False
 
     @allure.step("Ожидание кликабельности и клик по элементу")
     def click_element(self, locator, timeout=5):
@@ -58,6 +51,7 @@ class BasePage:
             raise AssertionError(f"⏳ Элемент не кликабелен или отсутствует: {locator}")
         except NoSuchElementException:
             raise AssertionError(f"❌ Элемент не найден: {locator}")
+
 
     @allure.step("Проверка корректности URL после перехода")
     def verify_current_url(self, expected_url, timeout=5):
