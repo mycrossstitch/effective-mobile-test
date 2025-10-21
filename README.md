@@ -24,15 +24,17 @@
 
 ### Структура проекта
 
+### Структура проекта
+```
 effective-mobile-test/
 ├── allure/
-│ └── environment.properties
+│   └── environment.properties
 ├── pages/
-│ ├── base_page.py
-│ ├── locators.py
-│ └── main_page.py
+│   ├── base_page.py
+│   ├── locators.py
+│   └── main_page.py
 ├── tests/
-│ └── test_main_page.py
+│   └── test_main_page.py
 ├── __init__.py
 ├── conftest.py
 ├── requirements.txt
@@ -40,7 +42,7 @@ effective-mobile-test/
 ├── README.md
 ├── docker-compose.yml
 └── Dockerfile
-
+```
 ### Установка локально
 1. Создать виртуальное окружение (Python 3.10):
 powershell
