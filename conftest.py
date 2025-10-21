@@ -7,7 +7,9 @@ from webdriver_manager.chrome import ChromeDriverManager
 
 @pytest.fixture()
 def driver(request):
-    window_size = getattr(request, "param", (1920, 1080))  # по умолчанию десктоп
+
+    # Получаем window_size из параметра теста
+    window_size = request.node.funcargs.get('window_size', (1920, 1080))
     options = Options()
     options.add_argument("--headless=new")
     options.add_argument("--no-sandbox")
