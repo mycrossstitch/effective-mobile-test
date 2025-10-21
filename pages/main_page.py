@@ -1,7 +1,7 @@
-
 import allure
 from pages.base_page import BasePage
 from pages.locators import MainPageLocators as MPL
+
 
 class MainPage(BasePage):
 
@@ -29,6 +29,7 @@ class MainPage(BasePage):
                 f"Обнаружены отсутствующие элементы:\n{error_text}"
             )
 
+
     @allure.step("Проверка корректности всех ссылок на главной странице")
     def check_all_links(self, locators):
         errors = []
@@ -41,7 +42,7 @@ class MainPage(BasePage):
             with allure.step(f"Проверяем элемент: {name}"):
                 # Проверяем наличие локатора
                 if not locator:
-                    errors.append(f"⚠️ Для '{name}' нет локатора в LOCATORS")
+                    errors.append(f"⚠️ Для '{name}' нет локатора")
                     continue
 
                 # Проверяем, что элемент есть на странице
@@ -51,7 +52,7 @@ class MainPage(BasePage):
 
                 try:
                     # Если бургер-меню, нужно открыть
-                    if "burger_button" in locators and name not in MPL.PAGE_LINKS:
+                    if "burger_button" in locators and name in MPL.MENU_LINKS:
                         self.click_element(locators["burger_button"])
                     # Кликаем и проверяем переход
                     self.click_element(locator)
