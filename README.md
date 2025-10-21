@@ -23,8 +23,6 @@
 - ChromeDriver, соответствующий версии браузера
 
 ### Структура проекта
-
-### Структура проекта
 ```
 effective-mobile-test/
 ├── allure/
@@ -56,7 +54,7 @@ powershell
  - добавить путь C:\allure\bin в переменную окружения PATH
  - закрыть все терминалы (чтобы обновился PATH) и проверить: 
    allure --version
- - 
+
 ### Запуск тестов
  - pytest -v --alluredir=allure-results
  - запуск только мобильных тестов: pytest -k "burger" -v --alluredir=allure-results
