@@ -19,4 +19,4 @@ def driver(request):
 
     request.cls.driver = driver
     yield
-    driver.close()
+    driver.quit()
